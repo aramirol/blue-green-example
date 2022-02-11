@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: ingress-blue-green
-  namespace: blue-green
+  namespace: blue-green-example
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/backend-protocol: http
@@ -13,12 +13,5 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: app-service-green
+          serviceName: app-service
           servicePort: 80
-  - host: test-blue-green.casare.int
-    http:
-      paths:
-      - backend:
-          serviceName: app-service-blue
-          servicePort: 80
-

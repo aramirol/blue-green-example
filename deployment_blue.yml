@@ -4,6 +4,7 @@ metadata:
   labels:
     run: app
   name: app-blue
+  namespace: blue-green-example
 spec:
   replicas: 1
   selector:

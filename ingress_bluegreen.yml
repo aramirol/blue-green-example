@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-blue-green
+  namespace: blue-green
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/backend-protocol: http
+    nginx.ingress.kubernetes.io/secure-backends: "true"
+spec:
+  rules:
+  - host: blue-green.casare.int
+    http:
+      paths:
+      - backend:
+          serviceName: app-service-blue
+          servicePort: 80
+  - host: test-blue-green.casare.int
+    http:
+      paths:
+      - backend:
+          serviceName: app-service-green
+          servicePort: 80
+

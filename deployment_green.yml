@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: app
+  name: app-green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: app
+      app: green
+  template:
+    metadata:
+      labels:
+        run: app
+        app: green
+    spec:
+      containers:
+      - name: app
+        image: aramirol/blue-green-deployment:0.0.2
+        ports:
+        - containerPort: 3000
